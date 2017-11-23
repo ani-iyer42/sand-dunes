@@ -21,8 +21,13 @@ public class Main extends SimpleApplication {
         viewPort.setBackgroundColor(ColorRGBA.LightGray);
         Material dump = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
         Spatial luke = assetManager.loadModel("Models/Oto/Oto.mesh.xml"); 
-        //Material mat = assetManager.loadMaterial("Models/Oto/Oto.j3m");
-        luke.setMaterial(dump);
+        Material mat = (Material)assetManager.loadMaterial("Models/Oto/Oto.j3m");
+      
+        
+        
+
+        
+        luke.setMaterial(mat);
         //getRootNode().attachChild(SkyFactory.createSky(assetManager, "Common/MatDefs/Misc/Sky.j3md", SkyFactory.EnvMapType.CubeMap));
         rootNode.attachChild(luke);
         //Skeleton skeleton = (Skeleton)assetManager.loadAsset("Models/Oto/Oto.skeleton.xml");
