@@ -1,0 +1,6 @@
+populate the scene graph
+create scene objects
+
+Todo:
+- figure camera
+- work on terrain
