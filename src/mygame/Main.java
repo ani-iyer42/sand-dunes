@@ -1,17 +1,14 @@
 package mygame;
 
+import com.jme3.animation.Skeleton;
 import com.jme3.app.SimpleApplication;
+import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.renderer.RenderManager;
-import com.jme3.scene.Geometry;
-import com.jme3.scene.shape.Box;
-
-/**
- * This is the Main Class of your Game. You should only do initialization here.
- * Move your Logic into AppStates or Controls
- * @author normenhansen
- */
+import com.jme3.scene.Spatial;
+import com.jme3.util.SkyFactory;
+//@author kinks
 public class Main extends SimpleApplication {
 
     public static void main(String[] args) {
@@ -21,15 +18,17 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        Box b = new Box(1, 1, 1);
-        Geometry geom = new Geometry("Box", b);
-
-        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        mat.setColor("Color", ColorRGBA.Blue);
-        geom.setMaterial(mat);
-
-        rootNode.attachChild(geom);
-    }
+        viewPort.setBackgroundColor(ColorRGBA.LightGray);
+        Material dump = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
+        Spatial luke = assetManager.loadModel("Models/Oto/Oto.mesh.xml"); 
+        //Material mat = assetManager.loadMaterial("Models/Oto/Oto.j3m");
+        luke.setMaterial(dump);
+        //getRootNode().attachChild(SkyFactory.createSky(assetManager, "Common/MatDefs/Misc/Sky.j3md", SkyFactory.EnvMapType.CubeMap));
+        rootNode.attachChild(luke);
+        //Skeleton skeleton = (Skeleton)assetManager.loadAsset("Models/Oto/Oto.skeleton.xml");
+        DirectionalLight sun = new DirectionalLight();
+        rootNode.addLight(sun);
+   }
 
     @Override
     public void simpleUpdate(float tpf) {
